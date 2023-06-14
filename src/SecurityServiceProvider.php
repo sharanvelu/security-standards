@@ -94,8 +94,16 @@ class SecurityServiceProvider extends ServiceProvider
     {
         $router = app('router');
 
-        foreach (config('security.middleware_groups', ['web']) as $middlewareGroup) {
-            $router->pushMiddlewareToGroup($middlewareGroup, \Sharan\Security\Middlewares\SecurityHeaderMiddleware::class);
+        $securityMiddlewares = (array)config('security.middleware_groups');
+
+        foreach (array_keys($router->getMiddlewareGroups()) as $middlewareGroup) {
+            // Allowed Hosts Middleware
+            $router->prependMiddlewareToGroup($middlewareGroup, \Sharan\Security\Middlewares\AllowedHostsMiddleware::class);
+
+            // Security Headers Middleware
+            if (count(array_intersect(['*', $middlewareGroup], $securityMiddlewares))) {
+                $router->pushMiddlewareToGroup($middlewareGroup, \Sharan\Security\Middlewares\SecurityHeaderMiddleware::class);
+            }
         }
     }
 }

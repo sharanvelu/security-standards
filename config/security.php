@@ -28,6 +28,17 @@ return [
         'api',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed Hosts
+    |--------------------------------------------------------------------------
+    |
+    | List of hosts from which the request should be allowed.
+    |
+    */
+
+    'allowed_hosts' => explode(',', env('ALLOWED_HOSTS')),
+
     /*w
     |--------------------------------------------------------------------------
     | Other Standards for Laravel Application
