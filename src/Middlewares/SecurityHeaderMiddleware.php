@@ -1,6 +1,6 @@
 <?php
 
-namespace Mallow\Security\Middlewares;
+namespace Sharan\Security\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -79,7 +79,7 @@ class SecurityHeaderMiddleware
     {
         $predefinedHeaders = ['content-security-policy', 'strict-transport-security'];
 
-        return !in_array(trimSpaces(strtolower($headerKey)), $predefinedHeaders);
+        return !in_array(strtolower($headerKey), $predefinedHeaders);
     }
 
     /**
@@ -91,10 +91,10 @@ class SecurityHeaderMiddleware
     private function addIncludedHeaders(Response $response)
     {
         foreach (config('security.headers.includes') as $header => $value) {
-            $header = trimSpaces($header);
+            $header = str_replace(' ', '', $header);
 
             if ($this->shouldAddHeader($header)) {
-                $response->headers->set(trimSpaces($header), $value);
+                $response->headers->set($header, $value);
             }
         }
 

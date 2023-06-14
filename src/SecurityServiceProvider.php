@@ -1,6 +1,6 @@
 <?php
 
-namespace Mallow\Security;
+namespace Sharan\Security;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -93,6 +93,6 @@ class SecurityServiceProvider extends ServiceProvider
     private function bootMiddlewares()
     {
         $router = $this->app['router'];
-        $router->pushMiddlewareToGroup('web', \Mallow\Security\Middlewares\SecurityHeaderMiddleware::class);
+        $router->pushMiddlewareToGroup('web', \Sharan\Security\Middlewares\SecurityHeaderMiddleware::class);
     }
 }

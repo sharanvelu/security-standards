@@ -1,25 +1,39 @@
 {
-    "name": "mallow/security-standards",
+    "name": "sharanvelu/security-standards",
     "description": "Basic Security Standards for Laravel Projects",
     "license": "MIT",
+    "keywords": [
+        "security",
+        "standards"
+    ],
+    "homepage": "https://github.com/sharanvelu/security-standards",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4|^8.0|^8.1|^8.2",
+        "laravel/framework": "^8|^9|^10"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0|^7.0|^8.0",
+        "phpunit/phpunit": "^9.4"
+    },
     "autoload": {
         "psr-4": {
-            "Mallow\\Security\\": "src/"
+            "Sharan\\Security\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sharan\\Security\\SecurityServiceProvider"
+            ]
         }
     },
     "authors": [
         {
             "name": "Sharan",
-            "email": "sharan@mallow-tech.com"
+            "email": "sharan@mallow-tech.com",
+            "role": "Developer"
         }
-    ],
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Mallow\\Security\\SecurityServiceProvider"
-            ]
-        }
-    },
-    "minimum-stability": "stable",
-    "require": {}
+    ]
 }
