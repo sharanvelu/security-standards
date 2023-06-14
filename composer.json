@@ -1,6 +1,6 @@
 {
     "name": "sharanvelu/security-standards",
-    "description": "Basic Security Standards for Laravel Projects",
+    "description": "Security Standards for Laravel Projects",
     "license": "MIT",
     "keywords": [
         "security",
