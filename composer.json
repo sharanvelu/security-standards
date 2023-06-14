@@ -1,0 +1,25 @@
+{
+    "name": "mallow/security-standards",
+    "description": "Basic Security Standards for Laravel Projects",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mallow\\Security\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sharan",
+            "email": "sharan@mallow-tech.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mallow\\Security\\SecurityServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
