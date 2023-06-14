@@ -11,7 +11,22 @@ return [
     | of their individual configuration.
     |
     */
+
     'enabled' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware Groups
+    |--------------------------------------------------------------------------
+    |
+    | Add the middleware groups which you want the security headers to be added.
+    |
+    */
+
+    'middleware_groups' => [
+        'web',
+        'api',
+    ],
 
     /*w
     |--------------------------------------------------------------------------

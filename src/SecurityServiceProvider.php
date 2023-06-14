@@ -92,7 +92,10 @@ class SecurityServiceProvider extends ServiceProvider
      */
     private function bootMiddlewares()
     {
-        $router = $this->app['router'];
-        $router->pushMiddlewareToGroup('web', \Sharan\Security\Middlewares\SecurityHeaderMiddleware::class);
+        $router = app('router');
+
+        foreach (config('security.middleware_groups', ['web']) as $middlewareGroup) {
+            $router->pushMiddlewareToGroup($middlewareGroup, \Sharan\Security\Middlewares\SecurityHeaderMiddleware::class);
+        }
     }
 }
