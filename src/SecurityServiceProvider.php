@@ -64,10 +64,10 @@ class SecurityServiceProvider extends ServiceProvider
      */
     private function bootPreventLazyLoading()
     {
-        if (config('security.standards.prevent_lazy_loading', true)) {
-            if (method_exists(Model::class, 'preventLazyLoading')) {
-                Model::preventLazyLoading(!app()->isProduction());
-            }
+        if (method_exists(Model::class, 'preventLazyLoading')) {
+            $enableLazyLoading = config('security.standards.prevent_lazy_loading', true);
+
+            Model::preventLazyLoading($enableLazyLoading);
         }
     }
 
