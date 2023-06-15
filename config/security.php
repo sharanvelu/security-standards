@@ -167,5 +167,21 @@ return [
 
             // ...
         ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Exclude Headers
+        |--------------------------------------------------------------------------
+        |
+        | The headers that need to be excluded can be added here. These headers will
+        | be excluded in the response.
+        |
+        | Some headers won't be excluded from the response.
+        |
+        */
+
+        'exclude' => [
+            'Server',
+        ],
     ],
 ];

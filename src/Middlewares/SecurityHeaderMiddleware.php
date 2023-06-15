@@ -20,13 +20,11 @@ class SecurityHeaderMiddleware
         $response = $next($request);
 
         if ($response instanceof Response) {
-            if (config('security.enabled', true)) {
-                $response = $this->addStrictTransportSecurityHeaderValue($response);
+            $response = $this->addStrictTransportSecurityHeaderValue($response);
 
-                $response = $this->addContentSecurityPolicyHeaderValue($response);
+            $response = $this->addContentSecurityPolicyHeaderValue($response);
 
-                $response = $this->addIncludedHeaders($response);
-            }
+            $response = $this->addIncludedHeaders($response);
         }
 
         return $response;

@@ -4,8 +4,9 @@ namespace Sharan\Security\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class AllowedHostsMiddleware
+class ExcludeHeadersMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,14 @@ class AllowedHostsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (count(array_intersect(['*', $request->getHost()], config('security.allowed_hosts')))) {
-            return $next($request);
+        $response = $next($request);
+
+        if ($response instanceof Response) {
+            foreach (config('security.headers.exclude') as $header) {
+                $response->headers->remove($header);
+            }
         }
 
-        abort(404);
+        return $response;
     }
 }
